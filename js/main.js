@@ -47,7 +47,7 @@ function generateSessionId() {
 }
 
 async function sendUserTrackingData(data) {
-    const trackingScriptURL = 'https://script.google.com/macros/s/YOUR_TRACKING_SCRIPT_ID/exec';
+    const trackingScriptURL = 'https://script.google.com/macros/s/AKfycbyhf_9qU9WfDhfSN0i4q6spaoh7UZkK93N6yUzaUQRFI3tSek-_LIOlX5B3yhGliqaf/exec';
     
     try {
         // Send data using fetch with no-cors mode
