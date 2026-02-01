@@ -339,7 +339,7 @@ function calculateInterestScore() {
 }
 
 async function sendEnhancedAnalytics(data) {
-    const analyticsScriptURL = 'https://script.google.com/macros/s/YOUR_ENHANCED_SCRIPT_ID/exec';
+    const analyticsScriptURL = 'https://script.google.com/macros/s/AKfycbwcm67sKPtZWTUrYqLBRP4DpL9BjX0rRLS2PIpKgtStpQXfAJdT1o2lNi79vO_fK5Ht/exec';
     
     try {
         // Convert nested objects to strings for Google Sheets
