@@ -16,7 +16,7 @@
     <meta property="og:description" content="Professional AI Development, Web Development, Mobile App Development services">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nexgenaitech.online/services.html">
-    <meta property="og:image" content="https://i.ibb.co/kgLZNPwR/Nex-Gen-Ai-Tech-logo.png">
+    <meta property="og:image" content="https://i.ibb.co/5XvqqqpL/Nex-Gen-Ai-Tech-logo.jpg">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -41,7 +41,7 @@
     </script>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/kgLZNPwR/Nex-Gen-Ai-Tech-logo.png">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/5XvqqqpL/Nex-Gen-Ai-Tech-logo.jpg">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -342,6 +342,7 @@
             text-align: center;
             border: 2px solid transparent;
             transition: all var(--transition-normal);
+            position: relative;
         }
         
         .pricing-card:hover {
@@ -367,16 +368,47 @@
             font-weight: 600;
         }
         
+        .discount-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+        
+        .price-container {
+            margin: 20px 0;
+        }
+        
+        .original-price {
+            font-size: 1.5rem;
+            color: var(--light-gray);
+            text-decoration: line-through;
+            display: block;
+        }
+        
         .price-amount {
             font-size: 3rem;
             font-weight: 700;
             color: var(--primary-color);
-            margin: 20px 0;
+            margin: 5px 0;
         }
         
         .price-period {
             color: var(--light-gray);
             font-size: 0.9rem;
+        }
+        
+        .discount-percentage {
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 5px;
         }
         
         .pricing-features {
@@ -459,6 +491,123 @@
             margin: 80px 0;
         }
         
+        .service-timeline {
+            margin: 60px 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .timeline-content {
+            margin-left: 40px;
+            padding: 10px 20px;
+            background: var(--dark-color);
+            border-radius: var(--border-radius);
+            flex: 1;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 10px;
+            top: 20px;
+            bottom: -30px;
+            width: 2px;
+            background: var(--primary-color);
+            opacity: 0.3;
+        }
+        
+        .timeline-item:last-child .timeline-line {
+            display: none;
+        }
+        
+        .service-comparison {
+            margin: 60px 0;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background: var(--dark-gray);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        .comparison-table th {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 20px;
+            text-align: left;
+        }
+        
+        .comparison-table td {
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .comparison-table .feature-check {
+            color: var(--secondary-color);
+        }
+        
+        .comparison-table .feature-uncheck {
+            color: var(--light-gray);
+        }
+        
+        /* New Services Styles */
+        .new-service-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .service-demo {
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .demo-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+        }
+        
+        .demo-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
         /* Keyframes */
         @keyframes fadeIn {
             from {
@@ -468,6 +617,15 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+        
+        @keyframes pricePulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
             }
         }
         
@@ -512,6 +670,11 @@
             .step-connector {
                 display: none;
             }
+            
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
         }
         
         @media (max-width: 768px) {
@@ -533,6 +696,24 @@
             
             .cta-service {
                 padding: 50px 20px;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-content {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+            
+            .timeline-dot {
+                position: relative;
+                margin-bottom: 10px;
+            }
+            
+            .timeline-line {
+                display: none;
             }
         }
         
@@ -565,7 +746,7 @@
     <div class="preloader" id="preloader">
         <div class="preloader-content">
             <div class="logo-pulse">
-                <img src="https://i.ibb.co/kgLZNPwR/Nex-Gen-Ai-Tech-logo.png" alt="NexGenAiTech Logo" style="width: 80px; height: 80px; border-radius: 50%;">
+                <img src="https://i.ibb.co/5XvqqqpL/Nex-Gen-Ai-Tech-logo.jpg" alt="NexGenAiTech Logo" style="width: 80px; height: 80px; border-radius: 50%;">
             </div>
             <h3 class="preloader-text">NexGenAiTech</h3>
         </div>
@@ -576,7 +757,7 @@
         <nav class="navbar">
             <div class="container">
                 <a href="index.html" class="logo">
-                    <img src="https://i.ibb.co/kgLZNPwR/Nex-Gen-Ai-Tech-logo.png" alt="NexGenAiTech Logo" class="logo-img">
+                    <img src="https://i.ibb.co/5XvqqqpL/Nex-Gen-Ai-Tech-logo.jpg" alt="NexGenAiTech Logo" class="logo-img">
                     <span class="logo-text">NexGenAiTech</span>
                 </a>
                 
@@ -720,6 +901,103 @@
                         <button class="btn btn-primary btn-sm view-detail" data-target="mobile">View Details</button>
                     </div>
                 </div>
+                
+                <!-- SaaS Solutions -->
+                <div class="service-main-card animate-on-scroll" data-delay="0.3" id="saas-service">
+                    <span class="new-service-badge">New</span>
+                    <div class="service-icon-large">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="service-title">SaaS Solutions</h3>
+                    <p class="service-description">Scalable Software-as-a-Service platforms with cloud infrastructure</p>
+                    
+                    <div class="service-feature-list">
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Multi-tenancy Architecture</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Subscription Management</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>API Development</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Cloud Deployment</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-cta-btn">
+                        <button class="btn btn-primary btn-sm view-detail" data-target="saas">View Details</button>
+                    </div>
+                </div>
+                
+                <!-- Enterprise Software -->
+                <div class="service-main-card animate-on-scroll" data-delay="0.4" id="enterprise-service">
+                    <div class="service-icon-large">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="service-title">Enterprise Software</h3>
+                    <p class="service-description">Custom enterprise-grade software solutions for large organizations</p>
+                    
+                    <div class="service-feature-list">
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>CRM & ERP Systems</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Workflow Automation</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Data Analytics Dashboards</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Integration Services</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-cta-btn">
+                        <button class="btn btn-primary btn-sm view-detail" data-target="enterprise">View Details</button>
+                    </div>
+                </div>
+                
+                <!-- UI/UX Design -->
+                <div class="service-main-card animate-on-scroll" data-delay="0.5" id="ui-service">
+                    <div class="service-icon-large">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="service-title">UI/UX Design</h3>
+                    <p class="service-description">User-centered design solutions for exceptional digital experiences</p>
+                    
+                    <div class="service-feature-list">
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>User Research</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Wireframing & Prototyping</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Visual Design</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Usability Testing</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-cta-btn">
+                        <button class="btn btn-primary btn-sm view-detail" data-target="ui">View Details</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -734,6 +1012,8 @@
                 <button class="detail-tab" data-target="saas">SaaS Solutions</button>
                 <button class="detail-tab" data-target="enterprise">Enterprise Software</button>
                 <button class="detail-tab" data-target="ui">UI/UX Design</button>
+                <button class="detail-tab" data-target="devops">DevOps & Cloud</button>
+                <button class="detail-tab" data-target="blockchain">Blockchain</button>
             </div>
             
             <!-- AI & ML Detail -->
@@ -802,6 +1082,12 @@
                             </div>
                             <span>OpenAI API</span>
                         </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <span>Scikit-learn</span>
+                        </div>
                     </div>
                 </div>
                 
@@ -838,6 +1124,14 @@
                             <p>Deploy models to production and integrate with your systems</p>
                         </div>
                     </div>
+                </div>
+                
+                <div class="service-demo animate-on-scroll">
+                    <h3 class="section-subtitle">See Our AI in Action</h3>
+                    <button class="demo-btn" onclick="requestDemo('AI')">
+                        <i class="fas fa-play-circle"></i>
+                        Request Live Demo
+                    </button>
                 </div>
             </div>
             
@@ -906,6 +1200,40 @@
                                 <i class="fab fa-node-js"></i>
                             </div>
                             <span>Node.js</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fab fa-vuejs"></i>
+                            </div>
+                            <span>Vue.js</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-timeline">
+                    <h3 class="section-subtitle">Project Timeline</h3>
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                        <div class="timeline-content">
+                            <h4>Week 1-2: Discovery & Planning</h4>
+                            <p>Requirement gathering, wireframing, and project planning</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                        <div class="timeline-content">
+                            <h4>Week 3-5: Design & Development</h4>
+                            <p>UI/UX design and core development</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                        <div class="timeline-content">
+                            <h4>Week 6: Testing & Deployment</h4>
+                            <p>Quality assurance and production deployment</p>
                         </div>
                     </div>
                 </div>
@@ -977,11 +1305,557 @@
                             </div>
                             <span>Flutter</span>
                         </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <span>Ionic</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-comparison">
+                    <h3 class="section-subtitle">Platform Comparison</h3>
+                    <table class="comparison-table animate-on-scroll">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Native iOS</th>
+                                <th>Native Android</th>
+                                <th>Cross-Platform</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Development Time</td>
+                                <td><i class="fas fa-clock feature-check"></i> 6-8 weeks</td>
+                                <td><i class="fas fa-clock feature-check"></i> 6-8 weeks</td>
+                                <td><i class="fas fa-bolt feature-check"></i> 4-6 weeks</td>
+                            </tr>
+                            <tr>
+                                <td>Performance</td>
+                                <td><i class="fas fa-star feature-check"></i> Excellent</td>
+                                <td><i class="fas fa-star feature-check"></i> Excellent</td>
+                                <td><i class="fas fa-star-half-alt feature-check"></i> Good</td>
+                            </tr>
+                            <tr>
+                                <td>Cost</td>
+                                <td><i class="fas fa-rupee-sign feature-uncheck"></i> High</td>
+                                <td><i class="fas fa-rupee-sign feature-uncheck"></i> High</td>
+                                <td><i class="fas fa-rupee-sign feature-check"></i> Low</td>
+                            </tr>
+                            <tr>
+                                <td>Code Reusability</td>
+                                <td><i class="fas fa-times feature-uncheck"></i> No</td>
+                                <td><i class="fas fa-times feature-uncheck"></i> No</td>
+                                <td><i class="fas fa-check feature-check"></i> Yes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- SaaS Solutions Detail -->
+            <div class="detail-content" id="saas-detail">
+                <div class="detail-header animate-on-scroll">
+                    <span class="detail-category">Cloud Solutions</span>
+                    <h2 class="section-title">SaaS Solutions Development</h2>
+                    <p class="section-subtitle">Build scalable, cloud-native software-as-a-service platforms</p>
+                </div>
+                
+                <div class="detail-grid animate-on-scroll">
+                    <div class="detail-feature">
+                        <div class="detail-feature-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h4>Multi-tenant Architecture</h4>
+                        <p>Secure, isolated environments for multiple customers on single infrastructure</p>
+                    </div>
+                    <div class="detail-feature">
+                        <div class="detail-feature-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h4>Subscription Management</h4>
+                        <p>Automated billing, invoicing, and subscription lifecycle management</p>
+                    </div>
+                    <div class="detail-feature">
+                        <div class="detail-feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Enterprise Security</h4>
+                        <p>Role-based access control, data encryption, and compliance management</p>
+                    </div>
+                    <div class="detail-feature">
+                        <div class="detail-feature-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h4>Analytics & Reporting</h4>
+                        <p>Real-time analytics, usage tracking, and custom reporting dashboards</p>
+                    </div>
+                </div>
+                
+                <div class="tech-stack-section">
+                    <h3 class="section-subtitle">SaaS Tech Stack</h3>
+                    <div class="tech-grid animate-on-scroll">
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fab fa-aws"></i>
+                            </div>
+                            <span>AWS</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fab fa-google"></i>
+                            </div>
+                            <span>Google Cloud</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fab fa-docker"></i>
+                            </div>
+                            <span>Docker</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fab fa-kubernetes"></i>
+                            </div>
+                            <span>Kubernetes</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <span>PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-steps">
+                    <h3 class="section-subtitle">SaaS Development Process</h3>
+                    <div class="process-step animate-on-scroll">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Architecture Design</h4>
+                            <p>Design scalable, secure multi-tenant architecture</p>
+                        </div>
+                        <div class="step-connector"></div>
+                    </div>
+                    <div class="process-step animate-on-scroll" data-delay="0.1">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Core Development</h4>
+                            <p>Develop authentication, subscription, and billing modules</p>
+                        </div>
+                        <div class="step-connector"></div>
+                    </div>
+                    <div class="process-step animate-on-scroll" data-delay="0.2">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Security Implementation</h4>
+                            <p>Implement RBAC, encryption, and compliance features</p>
+                        </div>
+                        <div class="step-connector"></div>
+                    </div>
+                    <div class="process-step animate-on-scroll" data-delay="0.3">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Deployment & Scaling</h4>
+                            <p>Cloud deployment with auto-scaling and monitoring</p>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Additional service details would be added similarly -->
+            <!-- Enterprise Software Detail -->
+            <div class="detail-content" id="enterprise-detail">
+                <div class="detail-header animate-on-scroll">
+                    <span class="detail-category">Enterprise Solutions</span>
+                    <h2 class="section-title">Enterprise Software Development</h2>
+                    <p class="section-subtitle">Robust enterprise-grade software solutions for large organizations</p>
+                </div>
+                
+                <div class="detail-grid animate-on-scroll">
+                    <div class="detail-feature">
+                        <div class="detail-feature-icon">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
+                        <h4>CRM Systems</h4>
+                        <p>Custom Customer Relationship Management systems with sales automation</p>
+                    </div>
+                    <div class="detail-feature">
+                        <div class="detail-feature-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h4>ERP Solutions</h4>
+                        <p>Enterprise Resource Planning systems for seamless business operations</p>
+                    </div>
+                    <div class="detail-feature">
+                        <div class="detail-feature-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h4>Workflow Automation</h4>
+                        <p>Automate business processes and reduce manual intervention</p>
+                    </div>
+                    <div class="detail-feature">
+                        <div class="detail-feature-icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <h4>Legacy System Integration</h4>
+                        <p>Integrate new solutions with existing legacy systems</p>
+                    </div>
+                </div>
+                
+                <div class="service-timeline">
+                    <h3 class="section-subtitle">Enterprise Project Phases</h3>
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                        <div class="timeline-content">
+                            <h4>Phase 1: Discovery (2-3 weeks)</h4>
+                            <p>Business analysis, requirement gathering, and stakeholder interviews</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                        <div class="timeline-content">
+                            <h4>Phase 2: Planning (3-4 weeks)</h4>
+                            <p>Architecture design, technology selection, and project planning</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                        <div class="timeline-content">
+                            <h4>Phase 3: Development (8-12 weeks)</h4>
+                            <p>Core development with agile methodology and regular demos</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                        <div class="timeline-content">
+                            <h4>Phase 4: Deployment & Support</h4>
+                            <p>Staged deployment, training, and ongoing support</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-stack-section">
+                    <h3 class="section-subtitle">Enterprise Tech Stack</h3>
+                    <div class="tech-grid animate-on-scroll">
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fab fa-java"></i>
+                            </div>
+                            <span>Java EE</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fab fa-microsoft"></i>
+                            </div>
+                            <span>.NET Core</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <span>Oracle DB</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fab fa-salesforce"></i>
+                            </div>
+                            <span>Salesforce</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fas fa-code-branch"></i>
+                            </div>
+                            <span>Microservices</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- UI/UX Design Detail -->
+            <div class="detail-content" id="ui-detail">
+                <div class="detail-header animate-on-scroll">
+                    <span class="detail-category">Design Services</span>
+                    <h2 class="section-title">UI/UX Design Services</h2>
+                    <p class="section-subtitle">Create exceptional user experiences with human-centered design approach</p>
+                </div>
+                
+                <div class="detail-grid animate-on-scroll">
+                    <div class="detail-feature">
+                        <div class="detail-feature-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h4>User Research</h4>
+                        <p>In-depth user interviews, persona creation, and journey mapping</p>
+                    </div>
+                    <div class="detail-feature">
+                        <div class="detail-feature-icon">
+                            <i class="fas fa-pencil-ruler"></i>
+                        </div>
+                        <h4>Wireframing</h4>
+                        <p>Low-fidelity wireframes to establish information architecture</p>
+                    </div>
+                    <div class="detail-feature">
+                        <div class="detail-feature-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h4>Visual Design</h4>
+                        <p>High-fidelity mockups with consistent design systems</p>
+                    </div>
+                    <div class="detail-feature">
+                        <div class="detail-feature-icon">
+                            <i class="fas fa-vial"></i>
+                        </div>
+                        <h4>Usability Testing</h4>
+                        <p>Prototype testing with real users to validate design decisions</p>
+                    </div>
+                </div>
+                
+                <div class="tech-stack-section">
+                    <h3 class="section-subtitle">Design Tools</h3>
+                    <div class="tech-grid animate-on-scroll">
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fab fa-figma"></i>
+                            </div>
+                            <span>Figma</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fab fa-sketch"></i>
+                            </div>
+                            <span>Sketch</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                            <span>Adobe XD</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fas fa-photo-video"></i>
+                            </div>
+                            <span>Adobe Creative Suite</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <span>InVision</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-steps">
+                    <h3 class="section-subtitle">Design Thinking Process</h3>
+                    <div class="process-step animate-on-scroll">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Empathize</h4>
+                            <p>Understand users through research and observation</p>
+                        </div>
+                        <div class="step-connector"></div>
+                    </div>
+                    <div class="process-step animate-on-scroll" data-delay="0.1">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Define</h4>
+                            <p>Synthesize research to define user problems and needs</p>
+                        </div>
+                        <div class="step-connector"></div>
+                    </div>
+                    <div class="process-step animate-on-scroll" data-delay="0.2">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Ideate</h4>
+                            <p>Brainstorm creative solutions through sketching and workshops</p>
+                        </div>
+                        <div class="step-connector"></div>
+                    </div>
+                    <div class="process-step animate-on-scroll" data-delay="0.3">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Prototype & Test</h4>
+                            <p>Create interactive prototypes and validate with users</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- DevOps & Cloud Detail -->
+            <div class="detail-content" id="devops-detail">
+                <div class="detail-header animate-on-scroll">
+                    <span class="detail-category">New Service</span>
+                    <h2 class="section-title">DevOps & Cloud Services</h2>
+                    <p class="section-subtitle">Streamline development and operations with automated cloud infrastructure</p>
+                </div>
+                
+                <div class="detail-grid animate-on-scroll">
+                    <div class="detail-feature">
+                        <div class="detail-feature-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h4>CI/CD Pipeline</h4>
+                        <p>Automated build, test, and deployment pipelines for faster releases</p>
+                    </div>
+                    <div class="detail-feature">
+                        <div class="detail-feature-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h4>Infrastructure as Code</h4>
+                        <p>Manage infrastructure through code using Terraform and CloudFormation</p>
+                    </div>
+                    <div class="detail-feature">
+                        <div class="detail-feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Cloud Security</h4>
+                        <p>Implement security best practices and compliance frameworks</p>
+                    </div>
+                    <div class="detail-feature">
+                        <div class="detail-feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Monitoring & Logging</h4>
+                        <p>Real-time monitoring, alerting, and centralized logging solutions</p>
+                    </div>
+                </div>
+                
+                <div class="tech-stack-section">
+                    <h3 class="section-subtitle">DevOps Tech Stack</h3>
+                    <div class="tech-grid animate-on-scroll">
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fab fa-docker"></i>
+                            </div>
+                            <span>Docker</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fab fa-kubernetes"></i>
+                            </div>
+                            <span>Kubernetes</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fab fa-jenkins"></i>
+                            </div>
+                            <span>Jenkins</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fab fa-aws"></i>
+                            </div>
+                            <span>AWS Services</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <span>Terraform</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-demo animate-on-scroll">
+                    <h3 class="section-subtitle">Free Infrastructure Audit</h3>
+                    <button class="demo-btn" onclick="requestDemo('DevOps')">
+                        <i class="fas fa-search"></i>
+                        Get Free Audit Report
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Blockchain Detail -->
+            <div class="detail-content" id="blockchain-detail">
+                <div class="detail-header animate-on-scroll">
+                    <span class="detail-category">New Service</span>
+                    <h2 class="section-title">Blockchain Development</h2>
+                    <p class="section-subtitle">Decentralized solutions using blockchain technology for trust and transparency</p>
+                </div>
+                
+                <div class="detail-grid animate-on-scroll">
+                    <div class="detail-feature">
+                        <div class="detail-feature-icon">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <h4>Smart Contracts</h4>
+                        <p>Self-executing contracts with predefined rules on blockchain</p>
+                    </div>
+                    <div class="detail-feature">
+                        <div class="detail-feature-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <h4>Cryptocurrency Wallets</h4>
+                        <p>Secure digital wallets for storing and managing cryptocurrencies</p>
+                    </div>
+                    <div class="detail-feature">
+                        <div class="detail-feature-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h4>DApps Development</h4>
+                        <p>Decentralized applications running on blockchain networks</p>
+                    </div>
+                    <div class="detail-feature">
+                        <div class="detail-feature-icon">
+                            <i class="fas fa-fingerprint"></i>
+                        </div>
+                        <h4>NFT Marketplaces</h4>
+                        <p>Non-fungible token platforms for digital art and collectibles</p>
+                    </div>
+                </div>
+                
+                <div class="tech-stack-section">
+                    <h3 class="section-subtitle">Blockchain Tech Stack</h3>
+                    <div class="tech-grid animate-on-scroll">
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fab fa-ethereum"></i>
+                            </div>
+                            <span>Ethereum</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                            <span>Solidity</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fab fa-js"></i>
+                            </div>
+                            <span>Web3.js</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <span>Truffle</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <span>IPFS</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-demo animate-on-scroll">
+                    <h3 class="section-subtitle">Blockchain Consultation</h3>
+                    <button class="demo-btn" onclick="requestDemo('Blockchain')">
+                        <i class="fas fa-comments"></i>
+                        Book Free Consultation
+                    </button>
+                </div>
+            </div>
             
         </div>
     </section>
@@ -991,13 +1865,21 @@
         <div class="container">
             <div class="section-header text-center animate-on-scroll">
                 <h2 class="section-title">Flexible <span class="highlight">Pricing</span></h2>
-                <p class="section-subtitle">Choose the plan that fits your business needs</p>
+                <p class="section-subtitle">Choose the plan that fits your business needs with special 40% discount</p>
+                <div class="discount-banner animate-on-scroll" style="background: var(--secondary-color); color: var(--dark-color); padding: 10px 20px; border-radius: var(--border-radius); display: inline-block; margin-top: 20px; font-weight: 600;">
+                    <i class="fas fa-gift"></i> Limited Time Offer: 40% OFF on All Services
+                </div>
             </div>
             
             <div class="pricing-grid">
                 <div class="pricing-card animate-on-scroll">
+                    <div class="discount-badge">40% OFF</div>
                     <h3 class="pricing-title">Basic</h3>
-                    <div class="price-amount">₹15,000</div>
+                    <div class="price-container">
+                        <div class="original-price">₹25,000</div>
+                        <div class="price-amount">₹15,000</div>
+                        <div class="discount-percentage">Save ₹10,000</div>
+                    </div>
                     <div class="price-period">Per Project</div>
                     <ul class="pricing-features">
                         <li><i class="fas fa-check"></i> Basic Website Development</li>
@@ -1012,8 +1894,13 @@
                 
                 <div class="pricing-card popular animate-on-scroll" data-delay="0.1">
                     <div class="popular-badge">Most Popular</div>
+                    <div class="discount-badge">40% OFF</div>
                     <h3 class="pricing-title">Professional</h3>
-                    <div class="price-amount">₹50,000</div>
+                    <div class="price-container">
+                        <div class="original-price">₹83,333</div>
+                        <div class="price-amount">₹50,000</div>
+                        <div class="discount-percentage">Save ₹33,333</div>
+                    </div>
                     <div class="price-period">Per Project</div>
                     <ul class="pricing-features">
                         <li><i class="fas fa-check"></i> Custom Web Application</li>
@@ -1027,9 +1914,14 @@
                 </div>
                 
                 <div class="pricing-card animate-on-scroll" data-delay="0.2">
+                    <div class="discount-badge">40% OFF</div>
                     <h3 class="pricing-title">Enterprise</h3>
-                    <div class="price-amount">Custom</div>
-                    <div class="price-period">Contact for Quote</div>
+                    <div class="price-container">
+                        <div class="original-price">₹1,66,667</div>
+                        <div class="price-amount">₹1,00,000</div>
+                        <div class="discount-percentage">Save ₹66,667</div>
+                    </div>
+                    <div class="price-period">Per Project</div>
                     <ul class="pricing-features">
                         <li><i class="fas fa-check"></i> Full-Stack Solution</li>
                         <li><i class="fas fa-check"></i> Unlimited Pages</li>
@@ -1039,6 +1931,69 @@
                         <li><i class="fas fa-check"></i> Complete SEO</li>
                     </ul>
                     <a href="contact.html" class="btn btn-outline">Contact Us</a>
+                </div>
+            </div>
+            
+            <!-- Additional Services Pricing -->
+            <div class="pricing-grid mt-60">
+                <div class="pricing-card animate-on-scroll" data-delay="0.3">
+                    <div class="discount-badge">40% OFF</div>
+                    <h3 class="pricing-title">AI Development</h3>
+                    <div class="price-container">
+                        <div class="original-price">₹2,50,000</div>
+                        <div class="price-amount">₹1,50,000</div>
+                        <div class="discount-percentage">Save ₹1,00,000</div>
+                    </div>
+                    <div class="price-period">Starting From</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Custom AI Model Development</li>
+                        <li><i class="fas fa-check"></i> Data Analysis & Processing</li>
+                        <li><i class="fas fa-check"></i> Model Training & Testing</li>
+                        <li><i class="fas fa-check"></i> 6 Months Maintenance</li>
+                        <li><i class="fas fa-check"></i> API Integration</li>
+                        <li><i class="fas fa-times"></i> Enterprise Scale</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline">Get Quote</a>
+                </div>
+                
+                <div class="pricing-card animate-on-scroll" data-delay="0.4">
+                    <div class="discount-badge">40% OFF</div>
+                    <h3 class="pricing-title">Mobile App</h3>
+                    <div class="price-container">
+                        <div class="original-price">₹1,66,667</div>
+                        <div class="price-amount">₹1,00,000</div>
+                        <div class="discount-percentage">Save ₹66,667</div>
+                    </div>
+                    <div class="price-period">Per Platform</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Native iOS/Android App</li>
+                        <li><i class="fas fa-check"></i> UI/UX Design</li>
+                        <li><i class="fas fa-check"></i> Backend API Integration</li>
+                        <li><i class="fas fa-check"></i> App Store Deployment</li>
+                        <li><i class="fas fa-check"></i> 6 Months Updates</li>
+                        <li><i class="fas fa-times"></i> Cross-Platform</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline">Get Quote</a>
+                </div>
+                
+                <div class="pricing-card animate-on-scroll" data-delay="0.5">
+                    <div class="discount-badge">40% OFF</div>
+                    <h3 class="pricing-title">UI/UX Design</h3>
+                    <div class="price-container">
+                        <div class="original-price">₹83,333</div>
+                        <div class="price-amount">₹50,000</div>
+                        <div class="discount-percentage">Save ₹33,333</div>
+                    </div>
+                    <div class="price-period">Complete Package</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> User Research & Analysis</li>
+                        <li><i class="fas fa-check"></i> Wireframes & Prototypes</li>
+                        <li><i class="fas fa-check"></i> Visual Design System</li>
+                        <li><i class="fas fa-check"></i> Interactive Prototypes</li>
+                        <li><i class="fas fa-check"></i> Design Documentation</li>
+                        <li><i class="fas fa-check"></i> Usability Testing</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline">Get Quote</a>
                 </div>
             </div>
         </div>
@@ -1092,6 +2047,26 @@
                         <p>Absolutely! We can analyze, improve, and extend your existing codebase. We also offer code audits and refactoring services to improve performance and maintainability.</p>
                     </div>
                 </div>
+                
+                <div class="faq-item animate-on-scroll" data-delay="0.4">
+                    <div class="faq-question">
+                        <span>How long is the 40% discount valid?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The 40% discount is a limited-time offer valid for the next 30 days. However, we offer regular discounts and special packages throughout the year. Contact us to know current offers.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item animate-on-scroll" data-delay="0.5">
+                    <div class="faq-question">
+                        <span>Do you provide post-launch support?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, all our packages include post-launch support ranging from 1 month to 1 year based on the package. We also offer extended support contracts with SLAs for enterprise clients.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1112,6 +2087,9 @@
                         <i class="fas fa-phone"></i>
                     </a>
                 </div>
+                <p class="cta-note" style="margin-top: 20px; color: rgba(255,255,255,0.8); font-size: 0.9rem;">
+                    <i class="fas fa-gift"></i> Limited Time: Get 40% OFF on all services
+                </p>
             </div>
         </div>
     </section>
@@ -1122,7 +2100,7 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <a href="index.html" class="footer-logo">
-                        <img src="https://i.ibb.co/kgLZNPwR/Nex-Gen-Ai-Tech-logo.png" alt="NexGenAiTech Logo" class="logo-img" style="width: 40px; height: 40px; border-radius: 50%;">
+                        <img src="https://i.ibb.co/5XvqqqpL/Nex-Gen-Ai-Tech-logo.jpg" alt="NexGenAiTech Logo" class="logo-img" style="width: 40px; height: 40px; border-radius: 50%;">
                         <span class="logo-text">NexGenAiTech</span>
                     </a>
                     <p class="footer-about">Building Intelligent Digital Solutions for the Future. Empowering businesses through AI-driven innovation.</p>
@@ -1151,8 +2129,8 @@
                         <li><a href="services.html#ai-service">AI Development</a></li>
                         <li><a href="services.html#web-service">Web Development</a></li>
                         <li><a href="services.html#mobile-service">Mobile Apps</a></li>
-                        <li><a href="#saas">SaaS Solutions</a></li>
-                        <li><a href="#ui">UI/UX Design</a></li>
+                        <li><a href="#saas-service">SaaS Solutions</a></li>
+                        <li><a href="#ui-service">UI/UX Design</a></li>
                     </ul>
                 </div>
                 
@@ -1285,6 +2263,76 @@
                             top: targetElement.offsetTop - 100,
                             behavior: 'smooth'
                         });
+                    }
+                });
+            });
+            
+            // Price animation on hover
+            const priceContainers = document.querySelectorAll('.price-container');
+            priceContainers.forEach(container => {
+                container.addEventListener('mouseenter', () => {
+                    const priceAmount = container.querySelector('.price-amount');
+                    priceAmount.style.animation = 'pricePulse 0.5s ease';
+                });
+            });
+            
+            // Initialize price animations
+            initializePriceAnimations();
+        });
+        
+        // Demo request function
+        function requestDemo(service) {
+            const message = `Hi NexGenAiTech, I'm interested in ${service} services. Please contact me for a demo.`;
+            window.open(`https://wa.me/918055698328?text=${encodeURIComponent(message)}`, '_blank');
+        }
+        
+        // Price animations
+        function initializePriceAnimations() {
+            const discountBadges = document.querySelectorAll('.discount-badge');
+            discountBadges.forEach(badge => {
+                badge.style.animation = 'pulse 2s infinite';
+            });
+            
+            // Animate price amounts on scroll
+            const priceAmounts = document.querySelectorAll('.price-amount');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'pricePulse 1s ease';
+                        setTimeout(() => {
+                            entry.target.style.animation = '';
+                        }, 1000);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            priceAmounts.forEach(amount => observer.observe(amount));
+        }
+        
+        // Add floating animation to service icons
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceIcons = document.querySelectorAll('.service-icon-large');
+            serviceIcons.forEach((icon, index) => {
+                setTimeout(() => {
+                    icon.style.animation = 'float 3s infinite ease-in-out';
+                }, index * 200);
+            });
+            
+            // Add hover effect to pricing cards
+            const pricingCards = document.querySelectorAll('.pricing-card');
+            pricingCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const badge = this.querySelector('.discount-badge');
+                    if (badge) {
+                        badge.style.transform = 'scale(1.1)';
+                        badge.style.transition = 'transform 0.3s ease';
+                    }
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    const badge = this.querySelector('.discount-badge');
+                    if (badge) {
+                        badge.style.transform = 'scale(1)';
                     }
                 });
             });
