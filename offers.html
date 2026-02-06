@@ -37,7 +37,7 @@
         "price": "2999",
         "priceCurrency": "INR",
         "validFrom": "2026-02-06",
-        "validThrough": "2026-03-31",
+        "validThrough": "2026-02-10",
         "url": "https://nexgenaitech.online/offers.html"
     }
     </script>
@@ -101,46 +101,34 @@
             text-shadow: 0 5px 15px rgba(255, 107, 107, 0.2);
         }
         
-        .offer-countdown {
+        .offer-end-date {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: var(--border-radius);
-            padding: 20px;
+            padding: 20px 40px;
             display: inline-block;
             margin-top: 30px;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        .countdown-title {
+        .date-title {
             font-size: 0.9rem;
             color: var(--light-gray);
             margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
-        .countdown-timer {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-        }
-        
-        .countdown-unit {
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 10px;
-            border-radius: 10px;
-            min-width: 60px;
-            text-align: center;
-        }
-        
-        .countdown-number {
+        .end-date {
             font-size: 1.8rem;
             font-weight: 700;
+            color: var(--white);
             display: block;
         }
         
-        .countdown-label {
-            font-size: 0.7rem;
-            opacity: 0.8;
+        .end-date-highlight {
+            color: #ff6b6b;
+            font-weight: 800;
         }
         
         .offers-main {
@@ -527,16 +515,12 @@
                 padding: 60px 30px;
             }
             
-            .countdown-timer {
-                gap: 10px;
-            }
-            
-            .countdown-unit {
-                min-width: 50px;
-            }
-            
-            .countdown-number {
+            .end-date {
                 font-size: 1.5rem;
+            }
+            
+            .offer-end-date {
+                padding: 15px 30px;
             }
         }
         
@@ -566,8 +550,8 @@
                 flex-wrap: wrap;
             }
             
-            .countdown-timer {
-                flex-wrap: wrap;
+            .end-date {
+                font-size: 1.3rem;
             }
         }
         
@@ -587,12 +571,11 @@
                 grid-template-columns: 1fr;
             }
             
-            .countdown-unit {
-                min-width: 40px;
-                padding: 8px;
+            .offer-end-date {
+                padding: 12px 20px;
             }
             
-            .countdown-number {
+            .end-date {
                 font-size: 1.2rem;
             }
             
@@ -652,26 +635,12 @@
                 <h1 class="page-title">Professional Website at <br><span class="hero-price">₹2999 Only</span></h1>
                 <p class="page-subtitle">Special offer for small businesses, startups, and professionals to establish their online presence</p>
                 
-                <div class="offer-countdown animate-on-scroll" data-delay="0.2">
-                    <div class="countdown-title">Offer Ends In:</div>
-                    <div class="countdown-timer" id="countdownTimer">
-                        <div class="countdown-unit">
-                            <span class="countdown-number" id="days">15</span>
-                            <span class="countdown-label">Days</span>
-                        </div>
-                        <div class="countdown-unit">
-                            <span class="countdown-number" id="hours">23</span>
-                            <span class="countdown-label">Hours</span>
-                        </div>
-                        <div class="countdown-unit">
-                            <span class="countdown-number" id="minutes">45</span>
-                            <span class="countdown-label">Minutes</span>
-                        </div>
-                        <div class="countdown-unit">
-                            <span class="countdown-number" id="seconds">30</span>
-                            <span class="countdown-label">Seconds</span>
-                        </div>
+                <div class="offer-end-date animate-on-scroll" data-delay="0.2">
+                    <div class="date-title">Offer Ends On:</div>
+                    <div class="end-date">
+                        <span class="end-date-highlight">10 February 2026</span>
                     </div>
+                    <p style="margin-top: 10px; font-size: 0.9rem; color: var(--light-gray);">Hurry! Limited time offer</p>
                 </div>
                 
                 <div class="hero-buttons animate-on-scroll" data-delay="0.3">
@@ -885,7 +854,7 @@
                         <i class="fas fa-file-contract"></i>
                     </div>
                     <h4>Offer Validity</h4>
-                    <p>The ₹2999 plan is only for basic static websites with maximum 5 pages. This is a limited time offer and price can change without notice.</p>
+                    <p>The ₹2999 plan is only for basic static websites with maximum 5 pages. This is a limited time offer valid until <strong>10 February 2026</strong>.</p>
                 </div>
                 
                 <div class="term-card animate-on-scroll" data-delay="0.1">
@@ -1228,7 +1197,7 @@
                         <i class="fas fa-chevron-down faq-icon"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>This is a limited time offer. The countdown timer shows the remaining time. However, we regularly offer discounts and special packages throughout the year.</p>
+                        <p>This offer is valid until <strong>10th February 2026</strong>. It's a limited time promotional offer, so we recommend booking your slot soon to avoid missing out.</p>
                     </div>
                 </div>
             </div>
@@ -1240,7 +1209,7 @@
         <div class="container">
             <div class="cta-content text-center">
                 <h2 class="cta-title animate-on-scroll">Ready to Get Your ₹2999 Website?</h2>
-                <p class="cta-subtitle animate-on-scroll" data-delay="0.1">Limited slots available. Contact us now before the offer ends!</p>
+                <p class="cta-subtitle animate-on-scroll" data-delay="0.1">Offer ends on <strong>10 Feb 2026</strong>. Limited slots available. Contact us now before the offer ends!</p>
                 
                 <div class="cta-buttons animate-on-scroll" data-delay="0.2">
                     <a href="https://wa.me/918055698328?text=Hi%20NexGenAiTech%2C%20I%20want%20to%20avail%20the%20₹2999%20Website%20Offer.%20Please%20guide%20me%20through%20the%20process." target="_blank" class="whatsapp-cta">
@@ -1347,35 +1316,6 @@
     <script src="js/main.js"></script>
     <script src="js/animations.js"></script>
     <script>
-        // Countdown Timer
-        function updateCountdown() {
-            const now = new Date();
-            const offerEnd = new Date();
-            offerEnd.setDate(now.getDate() + 15); // Offer ends in 15 days
-            
-            const timeRemaining = offerEnd - now;
-            
-            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-            
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-            
-            // If offer has ended
-            if (timeRemaining < 0) {
-                document.getElementById('countdownTimer').innerHTML = 
-                    '<div class="countdown-ended">Offer Expired</div>';
-            }
-        }
-        
-        // Update countdown every second
-        setInterval(updateCountdown, 1000);
-        updateCountdown(); // Initial call
-        
         // FAQ functionality
         document.addEventListener('DOMContentLoaded', function() {
             const faqItems = document.querySelectorAll('.faq-item');
