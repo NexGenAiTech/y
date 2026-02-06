@@ -1,5 +1,5 @@
 // Main JavaScript File for NexGenAiTech
-// Updated with User Tracking System
+// Updated with Floating Offer Button and User Tracking System
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all components
@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initPageTransitions();
     initSocialLinks();
     initUserTracking(); // New: Track user visits
+    initFloatingOfferButton(); // New: Initialize floating offer button
 });
 
 // ===== User Tracking System =====
@@ -53,7 +54,7 @@ async function sendUserTrackingData(data) {
         // Send data using fetch with no-cors mode
         await fetch(trackingScriptURL, {
             method: 'POST',
-            mode: 'no-cors', // Important for cross-origin requests
+            mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -63,7 +64,6 @@ async function sendUserTrackingData(data) {
         console.log('User tracking data sent successfully');
     } catch (error) {
         console.error('Error sending tracking data:', error);
-        // Optional: Retry logic or fallback storage
     }
 }
 
@@ -113,8 +113,8 @@ function initNavigation() {
     // Close mobile menu when clicking on a link
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            mobileToggle.classList.remove('active');
-            navMenu.classList.remove('active');
+            if (mobileToggle) mobileToggle.classList.remove('active');
+            if (navMenu) navMenu.classList.remove('active');
             document.body.style.overflow = '';
         });
     });
@@ -225,8 +225,8 @@ function initCounters() {
             if (entry.isIntersecting) {
                 const counter = entry.target;
                 const target = parseInt(counter.getAttribute('data-count'));
-                const speed = 2000; // Duration in milliseconds
-                const increment = target / (speed / 16); // 60fps
+                const speed = 2000;
+                const increment = target / (speed / 16);
                 let current = 0;
                 
                 const updateCounter = () => {
@@ -333,6 +333,177 @@ function initPageTransitions() {
     });
 }
 
+// ===== Floating Offer Button =====
+function initFloatingOfferButton() {
+    const floatingOfferBtn = document.getElementById('floatingOfferBtn');
+    const closeOfferBtn = document.getElementById('closeOfferBtn');
+    const offerMainBtn = document.getElementById('offerMainBtn');
+    const closeTooltip = document.getElementById('closeTooltip');
+    const tooltipButton = document.querySelector('.tooltip-button');
+    
+    // Check if elements exist
+    if (!floatingOfferBtn || !offerMainBtn) return;
+    
+    // Check if user has already closed the offer button
+    if (!sessionStorage.getItem('floatingOfferClosed')) {
+        // Show floating offer button after 10 seconds
+        setTimeout(() => {
+            floatingOfferBtn.classList.add('show');
+            
+            // Add bounce animation to main button
+            offerMainBtn.style.animation = 'bounce 2s infinite';
+            
+            // Remove bounce animation after 10 seconds
+            setTimeout(() => {
+                offerMainBtn.style.animation = '';
+            }, 10000);
+        }, 10000);
+    }
+    
+    // Close the entire floating offer button
+    if (closeOfferBtn) {
+        closeOfferBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            floatingOfferBtn.classList.remove('show');
+            sessionStorage.setItem('floatingOfferClosed', 'true');
+        });
+    }
+    
+    // Close only the tooltip
+    if (closeTooltip) {
+        closeTooltip.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const tooltip = document.querySelector('.offer-tooltip');
+            if (tooltip) {
+                tooltip.style.opacity = '0';
+                tooltip.style.visibility = 'hidden';
+                tooltip.style.transform = 'translateY(20px)';
+                
+                // Re-enable tooltip after 5 seconds
+                setTimeout(() => {
+                    tooltip.style.opacity = '';
+                    tooltip.style.visibility = '';
+                    tooltip.style.transform = '';
+                }, 5000);
+            }
+        });
+    }
+    
+    // Main button click - show tooltip if hidden
+    offerMainBtn.addEventListener('click', function() {
+        const tooltip = document.querySelector('.offer-tooltip');
+        if (tooltip) {
+            if (tooltip.style.opacity === '0' || tooltip.style.visibility === 'hidden') {
+                tooltip.style.opacity = '1';
+                tooltip.style.visibility = 'visible';
+                tooltip.style.transform = 'translateY(0)';
+                
+                // Auto-hide tooltip after 10 seconds
+                setTimeout(() => {
+                    tooltip.style.opacity = '0';
+                    tooltip.style.visibility = 'hidden';
+                    tooltip.style.transform = 'translateY(20px)';
+                    
+                    // Re-enable hover after 5 seconds
+                    setTimeout(() => {
+                        tooltip.style.opacity = '';
+                        tooltip.style.visibility = '';
+                        tooltip.style.transform = '';
+                    }, 5000);
+                }, 10000);
+            }
+        }
+    });
+    
+    // Tooltip button click tracking
+    if (tooltipButton) {
+        tooltipButton.addEventListener('click', function() {
+            console.log('User clicked "Get Offer Now" from floating button');
+            sessionStorage.setItem('floatingOfferClosed', 'true');
+            floatingOfferBtn.classList.remove('show');
+        });
+    }
+    
+    // Make tooltip stay open when hovering over it
+    const tooltip = document.querySelector('.offer-tooltip');
+    if (tooltip) {
+        tooltip.addEventListener('mouseenter', function() {
+            clearTimeout(window.tooltipTimeout);
+        });
+        
+        tooltip.addEventListener('mouseleave', function() {
+            // Start timeout to hide tooltip after leaving
+            window.tooltipTimeout = setTimeout(() => {
+                tooltip.style.opacity = '0';
+                tooltip.style.visibility = 'hidden';
+                tooltip.style.transform = 'translateY(20px)';
+                
+                // Re-enable hover after 5 seconds
+                setTimeout(() => {
+                    tooltip.style.opacity = '';
+                    tooltip.style.visibility = '';
+                    tooltip.style.transform = '';
+                }, 5000);
+            }, 3000);
+        });
+    }
+    
+    // Auto-hide tooltip after 15 seconds of being open
+    let tooltipAutoHideTimeout;
+    document.addEventListener('mousemove', function(e) {
+        // If mouse is near the offer button or tooltip, reset the timeout
+        if (e.target.closest('.floating-offer-btn')) {
+            clearTimeout(tooltipAutoHideTimeout);
+        } else {
+            // If tooltip is visible and mouse is not near it, hide after 15 seconds
+            const tooltip = document.querySelector('.offer-tooltip');
+            if (tooltip && (tooltip.style.opacity === '1' || window.getComputedStyle(tooltip).opacity === '1')) {
+                clearTimeout(tooltipAutoHideTimeout);
+                tooltipAutoHideTimeout = setTimeout(() => {
+                    tooltip.style.opacity = '0';
+                    tooltip.style.visibility = 'hidden';
+                    tooltip.style.transform = 'translateY(20px)';
+                    
+                    // Re-enable hover after 5 seconds
+                    setTimeout(() => {
+                        tooltip.style.opacity = '';
+                        tooltip.style.visibility = '';
+                        tooltip.style.transform = '';
+                    }, 5000);
+                }, 15000);
+            }
+        }
+    });
+    
+    // Show floating button on scroll (after 30% scroll)
+    window.addEventListener('scroll', function() {
+        if (!sessionStorage.getItem('floatingOfferClosed') && 
+            !floatingOfferBtn.classList.contains('show')) {
+            const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            
+            if (scrollPercentage > 30) {
+                floatingOfferBtn.classList.add('show');
+                
+                // Remove scroll listener after showing
+                window.removeEventListener('scroll', arguments.callee);
+            }
+        }
+    });
+    
+    // Add click animation to main button
+    offerMainBtn.addEventListener('mousedown', function() {
+        this.style.transform = 'scale(0.95)';
+    });
+    
+    offerMainBtn.addEventListener('mouseup', function() {
+        this.style.transform = 'scale(1.1)';
+    });
+    
+    offerMainBtn.addEventListener('mouseleave', function() {
+        this.style.transform = '';
+    });
+}
+
 // ===== Notification System =====
 function showNotification(message, type = 'info') {
     // Remove existing notifications
@@ -404,5 +575,96 @@ function showNotification(message, type = 'info') {
     }, 5000);
 }
 
-// Rest of your existing functions remain same...
-// (initScrollIndicator, validateForm, createRipple, initThemeToggle etc.)
+// ===== Utility Functions =====
+
+// Form validation
+function validateForm(form) {
+    const inputs = form.querySelectorAll('input[required], textarea[required]');
+    let isValid = true;
+    
+    inputs.forEach(input => {
+        if (!input.value.trim()) {
+            isValid = false;
+            input.classList.add('error');
+            
+            // Add error message
+            if (!input.nextElementSibling || !input.nextElementSibling.classList.contains('error-message')) {
+                const errorMsg = document.createElement('div');
+                errorMsg.className = 'error-message';
+                errorMsg.textContent = 'This field is required';
+                errorMsg.style.color = '#ff6b6b';
+                errorMsg.style.fontSize = '0.8rem';
+                errorMsg.style.marginTop = '5px';
+                input.parentNode.insertBefore(errorMsg, input.nextSibling);
+            }
+        } else {
+            input.classList.remove('error');
+            
+            // Remove error message
+            if (input.nextElementSibling && input.nextElementSibling.classList.contains('error-message')) {
+                input.nextElementSibling.remove();
+            }
+        }
+    });
+    
+    return isValid;
+}
+
+// Ripple effect for buttons
+function createRipple(event) {
+    const button = event.currentTarget;
+    const circle = document.createElement('span');
+    const diameter = Math.max(button.clientWidth, button.clientHeight);
+    const radius = diameter / 2;
+    
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${event.clientX - button.getBoundingClientRect().left - radius}px`;
+    circle.style.top = `${event.clientY - button.getBoundingClientRect().top - radius}px`;
+    circle.classList.add('ripple');
+    
+    const ripple = button.getElementsByClassName('ripple')[0];
+    if (ripple) {
+        ripple.remove();
+    }
+    
+    button.appendChild(circle);
+}
+
+// Initialize ripple effect on all buttons
+function initRippleEffect() {
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(button => {
+        button.addEventListener('click', createRipple);
+    });
+}
+
+// Dark/Light theme toggle (optional)
+function initThemeToggle() {
+    const themeToggle = document.getElementById('themeToggle');
+    if (!themeToggle) return;
+    
+    // Check for saved theme preference
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    document.body.setAttribute('data-theme', currentTheme);
+    
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        
+        // Update toggle icon
+        const icon = themeToggle.querySelector('i');
+        if (newTheme === 'dark') {
+            icon.className = 'fas fa-moon';
+        } else {
+            icon.className = 'fas fa-sun';
+        }
+    });
+}
+
+// Initialize ripple effect and theme toggle
+document.addEventListener('DOMContentLoaded', function() {
+    initRippleEffect();
+    initThemeToggle();
+});
