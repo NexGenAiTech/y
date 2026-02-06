@@ -16,7 +16,7 @@
     <meta property="og:description" content="Professional AI & Full-Stack Development Services">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nexgenaitech.online">
-    <meta property="og:image" content="https://i.ibb.co/kgLZNPwR/Nex-Gen-Ai-Tech-logo.png">
+    <meta property="og:image" content="https://i.ibb.co/5XvqqqpL/Nex-Gen-Ai-Tech-logo.jpg">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -24,7 +24,7 @@
     <meta name="twitter:description" content="AI & Full-Stack Development Company">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/kgLZNPwR/Nex-Gen-Ai-Tech-logo.png">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/5XvqqqpL/Nex-Gen-Ai-Tech-logo.jpg">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,7 +46,7 @@
         "@type": "Organization",
         "name": "NexGenAiTech",
         "url": "https://nexgenaitech.online",
-        "logo": "https://i.ibb.co/kgLZNPwR/Nex-Gen-Ai-Tech-logo.png",
+        "logo": "https://i.ibb.co/5XvqqqpL/Nex-Gen-Ai-Tech-logo.jpg",
         "description": "AI & Full-Stack Development Company",
         "address": {
             "@type": "PostalAddress",
@@ -62,13 +62,325 @@
         }
     }
     </script>
+    
+    <!-- Offer Popup CSS -->
+    <style>
+        /* Offer Popup Styles */
+        .offer-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .offer-popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .offer-popup {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            padding: 40px;
+            position: relative;
+            border: 2px solid #ff6b6b;
+            box-shadow: 0 20px 50px rgba(255, 107, 107, 0.3);
+            transform: scale(0.8);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+        }
+        
+        .offer-popup-overlay.active .offer-popup {
+            transform: scale(1);
+        }
+        
+        .offer-popup::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b6b, #ffa500);
+        }
+        
+        .offer-popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+        
+        .offer-popup-close:hover {
+            background: #ff6b6b;
+            transform: rotate(90deg);
+        }
+        
+        .offer-popup-badge {
+            position: absolute;
+            top: 20px;
+            left: -30px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 10px 40px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            transform: rotate(-45deg);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.5);
+        }
+        
+        .offer-popup-content {
+            text-align: center;
+        }
+        
+        .offer-popup-icon {
+            font-size: 3rem;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+        
+        .offer-popup-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .offer-popup-price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff6b6b, #ffa500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 10px 0;
+        }
+        
+        .offer-popup-subtitle {
+            color: #aaa;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .offer-popup-features {
+            list-style: none;
+            margin: 25px 0;
+            text-align: left;
+        }
+        
+        .offer-popup-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ddd;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .offer-popup-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .offer-popup-features i {
+            color: #ff6b6b;
+        }
+        
+        .offer-popup-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .offer-popup-btn {
+            flex: 1;
+            min-width: 150px;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .offer-popup-btn-primary {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+        }
+        
+        .offer-popup-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+        }
+        
+        .offer-popup-btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid #ff6b6b;
+        }
+        
+        .offer-popup-btn-outline:hover {
+            background: rgba(255, 107, 107, 0.1);
+        }
+        
+        .offer-popup-footer {
+            margin-top: 20px;
+            color: #888;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .offer-popup-countdown {
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 107, 107, 0.2);
+        }
+        
+        .popup-countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .popup-countdown-unit {
+            background: rgba(255, 107, 107, 0.2);
+            padding: 8px;
+            border-radius: 8px;
+            min-width: 50px;
+        }
+        
+        .popup-countdown-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff6b6b;
+            display: block;
+        }
+        
+        .popup-countdown-label {
+            font-size: 0.7rem;
+            color: #aaa;
+        }
+        
+        .offer-popup-note {
+            background: rgba(37, 211, 102, 0.1);
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .offer-popup-note i {
+            color: #25D366;
+            margin-right: 10px;
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .offer-popup {
+                padding: 30px 20px;
+                width: 95%;
+            }
+            
+            .offer-popup-price {
+                font-size: 2.8rem;
+            }
+            
+            .offer-popup-title {
+                font-size: 1.5rem;
+            }
+            
+            .offer-popup-buttons {
+                flex-direction: column;
+            }
+            
+            .offer-popup-btn {
+                width: 100%;
+            }
+            
+            .offer-popup-badge {
+                left: -35px;
+                padding: 8px 35px;
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .offer-popup {
+                padding: 25px 15px;
+            }
+            
+            .offer-popup-price {
+                font-size: 2.5rem;
+            }
+            
+            .popup-countdown-unit {
+                min-width: 40px;
+                padding: 6px;
+            }
+            
+            .popup-countdown-number {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Preloader -->
     <div class="preloader" id="preloader">
         <div class="preloader-content">
             <div class="logo-pulse">
-                <img src="https://i.ibb.co/kgLZNPwR/Nex-Gen-Ai-Tech-logo.png" alt="NexGenAiTech Logo" style="width: 80px; height: 80px; border-radius: 50%;">
+                <img src="https://i.ibb.co/5XvqqqpL/Nex-Gen-Ai-Tech-logo.jpg" alt="NexGenAiTech Logo" style="width: 80px; height: 80px; border-radius: 50%;">
             </div>
             <h3 class="preloader-text">NexGenAiTech</h3>
         </div>
@@ -79,17 +391,17 @@
         <nav class="navbar">
             <div class="container">
                 <a href="index.html" class="logo">
-                    <img src="https://i.ibb.co/kgLZNPwR/Nex-Gen-Ai-Tech-logo.png" alt="NexGenAiTech Logo" class="logo-img">
+                    <img src="https://i.ibb.co/5XvqqqpL/Nex-Gen-Ai-Tech-logo.jpg" alt="NexGenAiTech Logo" class="logo-img">
                     <span class="logo-text">NexGenAiTech</span>
                 </a>
                 
                 <div class="nav-menu" id="navMenu">
                     <ul class="nav-list">
                         <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-                        <li class="nav-item"><a href="offers.html" class="nav-link">Offers</a></li>
                         <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                         <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
                         <li class="nav-item"><a href="industries.html" class="nav-link">Industries</a></li>
+                        <li class="nav-item"><a href="offers.html" class="nav-link">Offers</a></li>
                         <li class="nav-item"><a href="process.html" class="nav-link">Process</a></li>
                         <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
                     </ul>
@@ -335,7 +647,7 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <a href="index.html" class="footer-logo">
-                        <img src="https://i.ibb.co/kgLZNPwR/Nex-Gen-Ai-Tech-logo.png" alt="NexGenAiTech Logo" class="logo-img" style="width: 40px; height: 40px; border-radius: 50%;">
+                        <img src="https://i.ibb.co/5XvqqqpL/Nex-Gen-Ai-Tech-logo.jpg" alt="NexGenAiTech Logo" class="logo-img" style="width: 40px; height: 40px; border-radius: 50%;">
                         <span class="logo-text">NexGenAiTech</span>
                     </a>
                     <p class="footer-about">Building Intelligent Digital Solutions for the Future. Empowering businesses through AI-driven innovation.</p>
@@ -413,8 +725,204 @@
         </a>
     </div>
 
+    <!-- Offer Popup -->
+    <div class="offer-popup-overlay" id="offerPopup">
+        <div class="offer-popup">
+            <div class="offer-popup-badge">LIMITED OFFER</div>
+            <button class="offer-popup-close" id="closeOfferPopup">&times;</button>
+            
+            <div class="offer-popup-content">
+                <div class="offer-popup-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                
+                <h2 class="offer-popup-title">Special Website Offer!</h2>
+                <div class="offer-popup-price">₹2999</div>
+                <p class="offer-popup-subtitle">Get a professional website for your business at an unbelievable price</p>
+                
+                <div class="offer-popup-countdown">
+                    <p><i class="fas fa-clock"></i> Offer ends in:</p>
+                    <div class="popup-countdown-timer">
+                        <div class="popup-countdown-unit">
+                            <span class="popup-countdown-number" id="popupDays">15</span>
+                            <span class="popup-countdown-label">Days</span>
+                        </div>
+                        <div class="popup-countdown-unit">
+                            <span class="popup-countdown-number" id="popupHours">23</span>
+                            <span class="popup-countdown-label">Hours</span>
+                        </div>
+                        <div class="popup-countdown-unit">
+                            <span class="popup-countdown-number" id="popupMinutes">45</span>
+                            <span class="popup-countdown-label">Mins</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <ul class="offer-popup-features">
+                    <li><i class="fas fa-check"></i> Professional Website Design</li>
+                    <li><i class="fas fa-check"></i> 5 Pages Included</li>
+                    <li><i class="fas fa-check"></i> Mobile Friendly</li>
+                    <li><i class="fas fa-check"></i> Free 1 Year Hosting</li>
+                    <li><i class="fas fa-check"></i> Fast Delivery (48-72 Hours)</li>
+                </ul>
+                
+                <div class="offer-popup-note">
+                    <i class="fas fa-bolt"></i> Only 10 slots available at this price!
+                </div>
+                
+                <div class="offer-popup-buttons">
+                    <a href="offers.html" class="offer-popup-btn offer-popup-btn-primary">
+                        <i class="fas fa-rocket"></i> Get This Offer
+                    </a>
+                    <a href="tel:+918055698328" class="offer-popup-btn offer-popup-btn-outline">
+                        <i class="fas fa-phone"></i> Call Now
+                    </a>
+                </div>
+                
+                <div class="offer-popup-footer">
+                    <i class="fas fa-lock"></i> No credit card required to inquire
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript -->
     <script src="js/main.js"></script>
     <script src="js/animations.js"></script>
+    
+    <!-- Offer Popup JavaScript -->
+    <script>
+        // Offer Popup Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const offerPopup = document.getElementById('offerPopup');
+            const closeOfferPopup = document.getElementById('closeOfferPopup');
+            const popupDays = document.getElementById('popupDays');
+            const popupHours = document.getElementById('popupHours');
+            const popupMinutes = document.getElementById('popupMinutes');
+            
+            // Check if user has already closed the popup in this session
+            if (!sessionStorage.getItem('offerPopupClosed')) {
+                // Show popup after 10 seconds
+                setTimeout(() => {
+                    offerPopup.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                    
+                    // Start countdown animation
+                    startPopupCountdown();
+                }, 10000); // 10 seconds
+            }
+            
+            // Close popup when X is clicked
+            closeOfferPopup.addEventListener('click', function() {
+                offerPopup.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+                sessionStorage.setItem('offerPopupClosed', 'true');
+            });
+            
+            // Close popup when clicking outside the content
+            offerPopup.addEventListener('click', function(e) {
+                if (e.target === offerPopup) {
+                    offerPopup.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore scrolling
+                    sessionStorage.setItem('offerPopupClosed', 'true');
+                }
+            });
+            
+            // Escape key to close popup
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && offerPopup.classList.contains('active')) {
+                    offerPopup.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore scrolling
+                    sessionStorage.setItem('offerPopupClosed', 'true');
+                }
+            });
+            
+            // Popup countdown timer
+            function startPopupCountdown() {
+                const now = new Date();
+                const offerEnd = new Date();
+                offerEnd.setDate(now.getDate() + 15); // Offer ends in 15 days
+                
+                function updatePopupCountdown() {
+                    const now = new Date();
+                    const timeRemaining = offerEnd - now;
+                    
+                    if (timeRemaining > 0) {
+                        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                        
+                        popupDays.textContent = days.toString().padStart(2, '0');
+                        popupHours.textContent = hours.toString().padStart(2, '0');
+                        popupMinutes.textContent = minutes.toString().padStart(2, '0');
+                        
+                        // Add pulse animation every minute
+                        if (minutes % 2 === 0) {
+                            popupDays.style.animation = 'pulse 0.5s ease';
+                            setTimeout(() => {
+                                popupDays.style.animation = '';
+                            }, 500);
+                        }
+                    } else {
+                        // Offer has ended
+                        popupDays.textContent = '00';
+                        popupHours.textContent = '00';
+                        popupMinutes.textContent = '00';
+                    }
+                }
+                
+                // Update countdown every minute
+                setInterval(updatePopupCountdown, 60000);
+                updatePopupCountdown(); // Initial call
+            }
+            
+            // Add animation to popup buttons on hover
+            const popupButtons = document.querySelectorAll('.offer-popup-btn');
+            popupButtons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Track popup interactions
+            const primaryButton = document.querySelector('.offer-popup-btn-primary');
+            const outlineButton = document.querySelector('.offer-popup-btn-outline');
+            
+            if (primaryButton) {
+                primaryButton.addEventListener('click', function() {
+                    console.log('User clicked "Get This Offer" button from popup');
+                    // Here you can add analytics tracking
+                });
+            }
+            
+            if (outlineButton) {
+                outlineButton.addEventListener('click', function() {
+                    console.log('User clicked "Call Now" button from popup');
+                    // Here you can add analytics tracking
+                });
+            }
+            
+            // Auto-show popup on scroll (optional - shows when user scrolls 30%)
+            window.addEventListener('scroll', function() {
+                if (!sessionStorage.getItem('offerPopupClosed') && 
+                    !offerPopup.classList.contains('active')) {
+                    const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                    
+                    if (scrollPercentage > 30) {
+                        offerPopup.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                        startPopupCountdown();
+                        
+                        // Remove scroll listener after showing popup
+                        window.removeEventListener('scroll', arguments.callee);
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
