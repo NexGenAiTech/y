@@ -1,7 +1,7 @@
 // Google Sheets Form Submission Handler for NexGenAiTech
 class FormHandler {
     constructor() {
-        this.scriptURL = 'https://script.google.com/macros/s/AKfycbxb1RwbEM6Z46wm4LypQd1btaQDoxi35DYb9AOHsV_6f3hWRBHIqi7ybEPffRkvshva3w/exec';
+        this.scriptURL = 'https://script.google.com/macros/sAKfycbyCGLbh1021a-OGiEISdNBDwMfn-L732eyMtEp1k_Nyxz8pMPDSac8BldhGKlM1j05Zaw/exec';
         this.init();
     }
 
